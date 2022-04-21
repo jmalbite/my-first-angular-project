@@ -5,8 +5,9 @@
   <div class="row">
     <div class="col-md-12">
       <app-vaccinated *ngIf="loadedComponent === 'vaccinated'"></app-vaccinated>
-      <hr />
-      <app-vaccines *ngIf="loadedComponent === 'vaccineType'"></app-vaccines>
+      <app-vaccines-area-list
+        *ngIf="loadedComponent === 'vaccineAreas'"
+      ></app-vaccines-area-list>
     </div>
   </div>
 </div>

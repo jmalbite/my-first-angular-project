@@ -9,7 +9,8 @@ import { VaccinatedComponent } from './components/vaccinated/vaccinated.componen
 import { VaccinatedListComponent } from './components/vaccinated/vaccinated-list/vaccinated-list.component';
 import { VaccinatedItemComponent } from './components/vaccinated/vaccinated-list/vaccinated-item/vaccinated-item.component';
 import { VaccinatedDetailComponent } from './components/vaccinated/vaccinated-detail/vaccinated-detail.component';
-import { VaccinesComponent } from './components/vaccines/vaccines.component';
+import { VaccinesAreaListComponent } from './components/vaccines-area-list/vaccines-area-list.component';
+import { VaccineAreaEditComponent } from './components/vaccines-area-list/vaccine-area-edit/vaccine-area-edit.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { VaccinesComponent } from './components/vaccines/vaccines.component';
     VaccinatedListComponent,
     VaccinatedItemComponent,
     VaccinatedDetailComponent,
-    VaccinesComponent,
+    VaccinesAreaListComponent,
+    VaccineAreaEditComponent,
   ],
   imports: [BrowserModule, FormsModule, HttpClientModule],
   providers: [],

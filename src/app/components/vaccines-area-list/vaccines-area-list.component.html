@@ -1,0 +1,35 @@
+<!-- Vaccine Area List Component -->
+
+<div class="row">
+  <app-vaccine-area-edit
+    (locationAdded)="onAreaAdded($event)"
+  ></app-vaccine-area-edit>
+  <hr />
+  <ul class="list-group">
+    <a
+      href="#"
+      class="list-group-item"
+      style="cursor: pointer"
+      *ngFor="let area of areas"
+      >{{ area.vaccLocation }}
+
+      <span
+        *ngIf="area.vaccAvailable.toLowerCase() === 'pfizer'"
+        class="label label-primary"
+        >{{ area.vaccAvailable.toLowerCase() }}</span
+      >
+
+      <span
+        *ngIf="area.vaccAvailable.toLowerCase() === 'sinovac'"
+        class="label label-warning"
+        >{{ area.vaccAvailable.toLowerCase() }}</span
+      >
+
+      <span
+        *ngIf="area.vaccAvailable.toLowerCase() === 'moderna'"
+        class="label label-success"
+        >{{ area.vaccAvailable.toLowerCase() }}</span
+      >
+    </a>
+  </ul>
+</div>

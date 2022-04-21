@@ -1,0 +1,56 @@
+<!-- Vaccine Area Edit Component -->
+
+<div class="row">
+  <div class="col-xs-12">
+    <form>
+      <div class="row">
+        <div class="col-sm-5 form-group">
+          <label for="Location">Location</label>
+          <input
+            type="text"
+            id="location"
+            class="form-control"
+            placeholder="location"
+            #locationInput
+          />
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-sm-5 form-group">
+          <label for="vaccine">Vaccine Available</label>
+          <input
+            type="text"
+            id="vaccine"
+            class="form-control"
+            placeholder="vaccine type"
+            #vaccineInput
+          />
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-xs-12">
+          <button
+            class="btn btn-success"
+            type="submit"
+            style="margin-left: 5px"
+            (click)="onAddVaccineArea()"
+          >
+            Add
+          </button>
+          <button class="btn btn-danger" type="button" style="margin-left: 5px">
+            Delete
+          </button>
+          <button
+            class="btn btn-primary"
+            type="button"
+            style="margin-left: 5px"
+          >
+            Clear
+          </button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
