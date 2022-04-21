@@ -1,1 +1,55 @@
-<p>vaccinated-detail works!</p>
+<!-- Vaccinated Detail Component -->
+
+<div class="row">
+  <div class="col-xs-12">
+    <h1>Details</h1>
+  </div>
+</div>
+<hr />
+
+<div class="row">
+  <div class="col-xs-12">
+    <label for="name">Name:</label>
+    {{ vaccinated.firstName }} {{ vaccinated.lastName }}
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-xs-12">
+    <label for="age">Age:</label>
+    {{ vaccinated.age }}
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-xs-12">
+    <label for="age">Adress:</label>
+    {{ vaccinated.address }}
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-xs-12">
+    <label for="date">Date vaccinated:</label>
+    {{ vaccinated.dateVaccinated }}
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-xs-12">
+    <label for="vaccineType">Vaccine Type:</label>
+    {{ vaccinated.vaccineType }}
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-xs-12">
+    <div class="btn-group">
+      <button class="btn btn-primary">Manage person</button>
+      <ul class="dropdown-menu">
+        <li><a href="#">Edit</a></li>
+        <li><a href="#">Delete</a></li>
+      </ul>
+    </div>
+  </div>
+</div>

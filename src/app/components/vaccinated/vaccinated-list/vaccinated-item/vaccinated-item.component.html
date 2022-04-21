@@ -1,1 +1,12 @@
-<p>vaccinated-item works!</p>
+<!-- Vaccinated Item Component -->
+
+<a href="#" class="list-group-item clearfix" (click)="onSelected()">
+  <div class="pull-left">
+    <h4 class="list-group-item-heading">
+      {{ vaccinated.firstName }} {{ vaccinated.lastName }}
+    </h4>
+    <p class="list-group-item-text">
+      Date vaccinated: {{ vaccinated.dateVaccinated }}
+    </p>
+  </div>
+</a>

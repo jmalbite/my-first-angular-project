@@ -3,13 +3,17 @@
   <div class="container-fluid">
     <!-- header branding  VaxPhil-->
     <div class="navbar-header">
-      <a href="#" class="navbar-brand">VaxPhil</a>
+      <a href="#" class="navbar-brand">VaxPhpnsInfo</a>
     </div>
 
     <div class="collapse navbar-collapse">
       <ul class="nav navbar-nav">
-        <li><a href="#">Vaccinated</a></li>
-        <li><a href="#">Vaccines</a></li>
+        <li>
+          <a href="#" (click)="onSelect('vaccinated')">Vaccinated List</a>
+        </li>
+        <li>
+          <a href="#" (click)="onSelect('vaccineType')">Vaccines Areas </a>
+        </li>
       </ul>
     </div>
   </div>

@@ -1,1 +1,16 @@
-<app-vaccinated-item></app-vaccinated-item>
+<!-- Vaccinated List Component -->
+<div class="row">
+  <div class="col-xs-12">
+    <button class="btn btn-success">Add new</button>
+  </div>
+</div>
+<hr />
+<div class="row">
+  <div class="col-xs-12">
+    <app-vaccinated-item
+      *ngFor="let vaccinatedEl of vaccinatedList"
+      [vaccinated]="vaccinatedEl"
+      (personnelSelected)="onPersonnelSelected(vaccinatedEl)"
+    ></app-vaccinated-item>
+  </div>
+</div>

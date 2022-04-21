@@ -2,11 +2,21 @@
 <div class="row">
   <!-- Vaccinated list component -->
   <div class="col-md-5">
-    <app-vaccinated-list></app-vaccinated-list>
+    <app-vaccinated-list
+      (personnelIsSelected)="personnelData = $event"
+    ></app-vaccinated-list>
   </div>
 
   <!-- Vaccinated Details Component -->
   <div class="col-md-5">
-    <app-vaccinated-detail></app-vaccinated-detail>
+    <app-vaccinated-detail
+      *ngIf="personnelData; else infoText"
+      [vaccinated]="personnelData"
+    ></app-vaccinated-detail>
+
+    <!-- this template is to display when no data selected in the list -->
+    <ng-template #infoText>
+      <h3>No vaccinated person seleted</h3>
+    </ng-template>
   </div>
 </div>
