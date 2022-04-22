@@ -11,25 +11,21 @@
       class="list-group-item"
       style="cursor: pointer"
       *ngFor="let area of areas"
+      [ngSwitch]="area.vaccAvailable.toLowerCase()"
       >{{ area.vaccLocation }}
 
-      <span
-        *ngIf="area.vaccAvailable.toLowerCase() === 'pfizer'"
-        class="label label-primary"
-        >{{ area.vaccAvailable.toLowerCase() }}</span
-      >
+      <!-- using ngSwitch property  -->
+      <span *ngSwitchCase="'pfizer'" class="label label-primary">{{
+        area.vaccAvailable
+      }}</span>
 
-      <span
-        *ngIf="area.vaccAvailable.toLowerCase() === 'sinovac'"
-        class="label label-warning"
-        >{{ area.vaccAvailable.toLowerCase() }}</span
-      >
+      <span *ngSwitchCase="'sinovac'" class="label label-warning">{{
+        area.vaccAvailable
+      }}</span>
 
-      <span
-        *ngIf="area.vaccAvailable.toLowerCase() === 'moderna'"
-        class="label label-success"
-        >{{ area.vaccAvailable.toLowerCase() }}</span
-      >
+      <span *ngSwitchCase="'moderna'" class="label label-success">{{
+        area.vaccAvailable
+      }}</span>
     </a>
   </ul>
 </div>

@@ -11,6 +11,7 @@ import { VaccinatedItemComponent } from './components/vaccinated/vaccinated-list
 import { VaccinatedDetailComponent } from './components/vaccinated/vaccinated-detail/vaccinated-detail.component';
 import { VaccinesAreaListComponent } from './components/vaccines-area-list/vaccines-area-list.component';
 import { VaccineAreaEditComponent } from './components/vaccines-area-list/vaccine-area-edit/vaccine-area-edit.component';
+import { DropdownDirective } from './components/directives/dropdown.directive';
 
 @NgModule({
   declarations: [
@@ -22,6 +23,7 @@ import { VaccineAreaEditComponent } from './components/vaccines-area-list/vaccin
     VaccinatedDetailComponent,
     VaccinesAreaListComponent,
     VaccineAreaEditComponent,
+    DropdownDirective,
   ],
   imports: [BrowserModule, FormsModule, HttpClientModule],
   providers: [],
