@@ -1,12 +1,9 @@
-import {
-  Component,
-  ElementRef,
-  OnInit,
-  ViewChild,
-  EventEmitter,
-  Output,
-} from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+//models
 import { Areas } from '../areas.model';
+
+//services
+import { VaccineAreasService } from '../../services/vaccine-areas.service';
 
 @Component({
   selector: 'app-vaccine-area-edit',
@@ -17,9 +14,8 @@ export class VaccineAreaEditComponent implements OnInit {
   @ViewChild('locationInput') locationInputRef: ElementRef;
   @ViewChild('vaccineInput') vaccineInputRef: ElementRef;
 
-  @Output() locationAdded = new EventEmitter<Areas>();
-
-  constructor() {}
+  //inject vaccineAreasService
+  constructor(private areasService: VaccineAreasService) {}
 
   ngOnInit(): void {}
 
@@ -30,7 +26,9 @@ export class VaccineAreaEditComponent implements OnInit {
     const newLocation = new Areas(locInput, vaccInput);
 
     if (locInput !== '' && vaccInput !== '') {
-      this.locationAdded.emit(newLocation);
+      this.areasService.addLocation(newLocation);
+
+      //clear fields
       this.locationInputRef.nativeElement.value = '';
       this.vaccineInputRef.nativeElement.value = '';
     }

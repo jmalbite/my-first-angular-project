@@ -19,13 +19,17 @@
       <div class="row">
         <div class="col-sm-5 form-group">
           <label for="vaccine">Vaccine Available</label>
-          <input
-            type="text"
-            id="vaccine"
+          <!-- #vaccineInput - is a reference for native element this.vaccineInputRef.nativeElement.value -->
+          <select
             class="form-control"
+            id="vaccine"
             placeholder="vaccine type"
             #vaccineInput
-          />
+          >
+            <option>pfizer</option>
+            <option>moderna</option>
+            <option>sinovac</option>
+          </select>
         </div>
       </div>
 

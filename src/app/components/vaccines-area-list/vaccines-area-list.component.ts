@@ -1,5 +1,10 @@
 import { Component, OnInit } from '@angular/core';
+
+//models
 import { Areas } from './areas.model';
+
+//serives
+import { VaccineAreasService } from '../services/vaccine-areas.service';
 
 @Component({
   selector: 'app-vaccines-area-list',
@@ -7,17 +12,14 @@ import { Areas } from './areas.model';
   styleUrls: ['./vaccines-area-list.component.css'],
 })
 export class VaccinesAreaListComponent implements OnInit {
-  areas: Areas[] = [
-    new Areas('SM City', 'Pfizer'),
-    new Areas('Robinsons Galleria', 'Sinovac'),
-    new Areas('Ayala center', 'Moderna'),
-  ];
+  areas: Areas[];
 
-  constructor() {}
+  constructor(private areasService: VaccineAreasService) {}
 
-  ngOnInit(): void {}
-
-  onAreaAdded(newArea: Areas) {
-    this.areas.push(newArea);
+  ngOnInit(): void {
+    this.areas = this.areasService.getAreas();
+    this.areasService.newLocationAdded.subscribe((newAreasList: Areas[]) => {
+      this.areas = newAreasList;
+    });
   }
 }

@@ -12,6 +12,7 @@ import { VaccinatedDetailComponent } from './components/vaccinated/vaccinated-de
 import { VaccinesAreaListComponent } from './components/vaccines-area-list/vaccines-area-list.component';
 import { VaccineAreaEditComponent } from './components/vaccines-area-list/vaccine-area-edit/vaccine-area-edit.component';
 import { DropdownDirective } from './components/directives/dropdown.directive';
+import { VaccineAreasService } from './components/services/vaccine-areas.service';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,10 @@ import { DropdownDirective } from './components/directives/dropdown.directive';
     DropdownDirective,
   ],
   imports: [BrowserModule, FormsModule, HttpClientModule],
-  providers: [],
+
+  //putting service in the in the providers means
+  //you can access it in other component
+  providers: [VaccineAreasService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

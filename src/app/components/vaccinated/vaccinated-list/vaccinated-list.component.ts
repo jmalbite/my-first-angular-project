@@ -1,4 +1,8 @@
-import { Component, OnInit, EventEmitter, Output } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+//services
+import { VaccinatedService } from '../../services/vaccinated.service';
+
+//models
 import { Vaccinated } from '../vaccinated.model';
 
 @Component({
@@ -7,40 +11,15 @@ import { Vaccinated } from '../vaccinated.model';
   styleUrls: ['./vaccinated-list.component.css'],
 })
 export class VaccinatedListComponent implements OnInit {
-  @Output() personnelIsSelected = new EventEmitter<Vaccinated>();
+  vaccinatedList: Vaccinated[];
 
-  vaccinatedList: Vaccinated[] = [
-    new Vaccinated(
-      'Jm',
-      'Albite',
-      27,
-      'Consolacion',
-      'September 3, 2021',
-      'Sinovac'
-    ),
-    new Vaccinated(
-      'Regine',
-      'Raganas',
-      25,
-      'Talisay',
-      'June 22, 2021',
-      'Pfizer'
-    ),
-    new Vaccinated(
-      'Eunice',
-      'Albite',
-      21,
-      'Cebu City',
-      'July 4, 2021',
-      'Moderna'
-    ),
-  ];
+  //since the service 'VaccinatedService' is added to the parent component in 'vaccinated.component.ts'
+  //it can now be injected to the child components
+  constructor(private vaccinatedService: VaccinatedService) {}
 
-  constructor() {}
-
-  ngOnInit(): void {}
-
-  onPersonnelSelected(personnelData: Vaccinated) {
-    this.personnelIsSelected.emit(personnelData);
+  //ngInit - study different hooks in the angular
+  ngOnInit(): void {
+    //display list when component reload
+    this.vaccinatedList = this.vaccinatedService.getVaccinatedList();
   }
 }

@@ -1,5 +1,10 @@
-import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+
+//models
 import { Vaccinated } from '../../vaccinated.model';
+
+//services
+import { VaccinatedService } from '../../../services/vaccinated.service';
 
 @Component({
   selector: 'app-vaccinated-item',
@@ -8,13 +13,14 @@ import { Vaccinated } from '../../vaccinated.model';
 })
 export class VaccinatedItemComponent implements OnInit {
   @Input() vaccinated: Vaccinated;
-  @Output() personnelSelected = new EventEmitter<void>();
 
-  constructor() {}
+  constructor(private vaccinatedService: VaccinatedService) {}
 
   ngOnInit(): void {}
 
   onSelected(): void {
-    this.personnelSelected.emit();
+    //pass the value of the personnel data
+    //into the service 'vaccinatedPersonnelSelected'
+    this.vaccinatedService.vaccinatedPersonnelSelected.emit(this.vaccinated);
   }
 }

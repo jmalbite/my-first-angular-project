@@ -1,5 +1,6 @@
 import { Component, Input, OnInit, EventEmitter } from '@angular/core';
 import { Vaccinated } from '../vaccinated.model';
+import { VaccinatedService } from '../../services/vaccinated.service';
 
 @Component({
   selector: 'app-vaccinated-detail',
@@ -9,7 +10,12 @@ import { Vaccinated } from '../vaccinated.model';
 export class VaccinatedDetailComponent implements OnInit {
   @Input() vaccinated: Vaccinated;
 
-  constructor() {}
+  constructor(private vaccinatedService: VaccinatedService) {}
 
   ngOnInit(): void {}
+
+  deletePersonnel() {
+    console.log('deleted');
+    this.vaccinatedService.deletePersonnel(this.vaccinated.firstName);
+  }
 }
