@@ -1,35 +1,21 @@
-import { EventEmitter } from '@angular/core';
+import { Subject } from 'rxjs';
 import { Vaccinated } from '../vaccinated/vaccinated.model';
 
 export class VaccinatedService {
   //it will receive vaccinated personnel data
-  vaccinatedPersonnelSelected = new EventEmitter<Vaccinated>();
+  vaccinatedPersonnelSelected = new Subject<Vaccinated>();
 
-  vaccListChanged = new EventEmitter<Vaccinated[]>();
+  vaccListChanged = new Subject<Vaccinated[]>();
   //use private so it will not be accessible outside the class
   private vaccinatedList: Vaccinated[] = [
-    new Vaccinated(
-      'Jm',
-      'Albite',
-      27,
-      'Consolacion',
-      'September 3, 2021',
-      'Sinovac'
-    ),
-    new Vaccinated(
-      'Regine',
-      'Raganas',
-      25,
-      'Talisay',
-      'June 22, 2021',
-      'Pfizer'
-    ),
+    new Vaccinated('Jm', 'Albite', 27, 'Consolacion', '09/27/2021', 'Sinovac'),
+    new Vaccinated('Regine', 'Raganas', 25, 'Talisay', '10/5/2021', 'Pfizer'),
     new Vaccinated(
       'Eunice',
       'Albite',
       21,
       'Cebu City',
-      'July 4, 2021',
+      '12/13/2021',
       'Moderna'
     ),
   ];
@@ -39,15 +25,21 @@ export class VaccinatedService {
     return this.vaccinatedList.slice();
   }
 
-  deletePersonnel(personnelName: string) {
-    this.vaccListChanged.emit(
-      this.vaccinatedList.filter((vaccinated) => {
-        return vaccinated.firstName !== personnelName;
-      })
-    );
-  }
-
   getPersonnel(index: number) {
     return this.vaccinatedList[index];
+  }
+
+  addVaccinated(newData: Vaccinated) {
+    this.vaccinatedList.push(newData);
+  }
+
+  updatePersonsDetail(index: number, updatedData: Vaccinated) {
+    this.vaccinatedList[index] = updatedData;
+    this.vaccListChanged.next(this.vaccinatedList.slice());
+  }
+
+  deletePersonnel(index: number) {
+    this.vaccinatedList.splice(index, 1);
+    this.vaccListChanged.next(this.vaccinatedList.slice());
   }
 }

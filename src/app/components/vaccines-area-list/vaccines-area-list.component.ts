@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Subscription } from 'rxjs';
 
 //models
 import { Areas } from './areas.model';
@@ -11,15 +12,26 @@ import { VaccineAreasService } from '../services/vaccine-areas.service';
   templateUrl: './vaccines-area-list.component.html',
   styleUrls: ['./vaccines-area-list.component.css'],
 })
-export class VaccinesAreaListComponent implements OnInit {
+export class VaccinesAreaListComponent implements OnInit, OnDestroy {
   areas: Areas[];
+  private areasSub: Subscription;
 
   constructor(private areasService: VaccineAreasService) {}
 
   ngOnInit(): void {
     this.areas = this.areasService.getAreas();
-    this.areasService.newLocationAdded.subscribe((newAreasList: Areas[]) => {
-      this.areas = newAreasList;
-    });
+    this.areasSub = this.areasService.areasListChanged.subscribe(
+      (newAreasList: Areas[]) => {
+        this.areas = newAreasList;
+      }
+    );
+  }
+
+  ngOnDestroy(): void {
+    this.areasSub.unsubscribe();
+  }
+
+  onEditLocation(index: number) {
+    this.areasService.startingEditingLocation.next(index);
   }
 }

@@ -28,7 +28,10 @@ export class VaccinatedDetailComponent implements OnInit {
   }
 
   onDeletePersonnel() {
-    this.vaccinatedService.deletePersonnel(this.vaccinated.firstName);
+    this.vaccinatedService.deletePersonnel(this.id);
+
+    //back to the previous route after deleting
+    this.router.navigate(['../'], { relativeTo: this.route });
   }
 
   onEditPerson() {

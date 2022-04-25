@@ -24,14 +24,16 @@ export class VaccinatedListComponent implements OnInit {
 
   //ngInit - study different hooks in the angular
   ngOnInit(): void {
-    //display list when component reload
-    this.vaccinatedList = this.vaccinatedService.getVaccinatedList();
+    //display list when the list changes
     this.vaccinatedService.vaccListChanged.subscribe(
       (newList: Vaccinated[]) => {
         this.vaccinatedList = newList;
         console.log(this.vaccinatedList);
       }
     );
+
+    //display list when the component loaded
+    this.vaccinatedList = this.vaccinatedService.getVaccinatedList();
   }
 
   onAddVaccinated() {

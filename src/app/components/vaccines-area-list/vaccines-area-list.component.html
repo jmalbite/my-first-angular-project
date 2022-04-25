@@ -5,11 +5,11 @@
   <hr />
   <ul class="list-group">
     <a
-      href="#"
       class="list-group-item"
       style="cursor: pointer"
-      *ngFor="let area of areas"
+      *ngFor="let area of areas; let i = index"
       [ngSwitch]="area.vaccAvailable.toLowerCase()"
+      (click)="onEditLocation(i)"
       >{{ area.vaccLocation }}
 
       <!-- using ngSwitch property  -->

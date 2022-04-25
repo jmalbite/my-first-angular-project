@@ -1,1 +1,113 @@
-<p>add-new-vaccinated works!</p>
+<h3>Add New Vaccinated</h3>
+<hr />
+<!-- add new vaccinated component -->
+<!-- for this form i will be implementing the reactive approach for angular form -->
+<div class="row">
+  <div class="col-xs-10">
+    <form>
+      <div class="row">
+        <div class="col-xs-12">
+          <div class="form-group">
+            <label for="">First Name</label>
+            <input
+              class="form-control"
+              type="text"
+              id="firstName"
+              name="firstName"
+            />
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-xs-12">
+          <div class="form-group">
+            <label for="">Last Name</label>
+            <input
+              class="form-control"
+              type="text"
+              id="lastName"
+              name="lastName"
+            />
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-xs-12">
+          <div class="form-group">
+            <label for="">Age</label>
+            <input type="number" id="age" name="age" class="form-control" />
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-xs-12">
+          <div class="form-group">
+            <label for="">Address</label>
+            <input
+              type="text"
+              id="address"
+              name="address"
+              class="form-control"
+            />
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-xs-12">
+          <div class="form-group">
+            <label for="">Date Vaccinated</label>
+            <input
+              type="date"
+              id="dateVaccinated"
+              name="dateVaccinated"
+              class="form-control"
+            />
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-xs-12 form-group">
+          <label for="vaccine">Vaccine Type</label>
+          <!-- name, ngModel, class - angular forms -->
+          <select
+            id="vaccineType"
+            placeholder="vaccine type"
+            class="form-control"
+            name="vaccineType"
+            ngModel
+            required
+          >
+            <option>Pfizer</option>
+            <option>Moderna</option>
+            <option>Sinovac</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- buttons   -->
+      <div class="row">
+        <div class="col-xs-12">
+          <button
+            type="submit"
+            class="btn btn-success"
+            style="margin-right: 5px"
+          >
+            Save
+          </button>
+          <button
+            type="button"
+            class="btn btn-primary"
+            style="margin-right: 5px"
+          >
+            Clear
+          </button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
