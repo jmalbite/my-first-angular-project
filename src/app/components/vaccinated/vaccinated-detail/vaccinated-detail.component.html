@@ -51,8 +51,10 @@
         Manage person <span class="glyphicon glyphicon-chevron-down"></span>
       </button>
       <ul class="dropdown-menu">
-        <li><a href="#">Edit</a></li>
-        <li><a href="#" (click)="deletePersonnel()">Delete</a></li>
+        <li style="cursor: pointer"><a (click)="onEditPerson()">Edit</a></li>
+        <li style="cursor: pointer">
+          <a (click)="onDeletePersonnel()">Delete</a>
+        </li>
       </ul>
     </div>
   </div>

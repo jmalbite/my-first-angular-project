@@ -13,6 +13,10 @@ import { VaccinesAreaListComponent } from './components/vaccines-area-list/vacci
 import { VaccineAreaEditComponent } from './components/vaccines-area-list/vaccine-area-edit/vaccine-area-edit.component';
 import { DropdownDirective } from './components/directives/dropdown.directive';
 import { VaccineAreasService } from './components/services/vaccine-areas.service';
+import { AppRoutingModule } from './app-routing-module';
+import { VaccinatedDetailStartComponent } from './components/vaccinated-detail-start/vaccinated-detail-start.component';
+import { EditDetailsComponent } from './components/vaccinated/vaccinated-detail/edit-details/edit-details.component';
+import { AddNewVaccinatedComponent } from './components/vaccinated/add-new-vaccinated/add-new-vaccinated.component';
 
 @NgModule({
   declarations: [
@@ -25,8 +29,11 @@ import { VaccineAreasService } from './components/services/vaccine-areas.service
     VaccinesAreaListComponent,
     VaccineAreaEditComponent,
     DropdownDirective,
+    VaccinatedDetailStartComponent,
+    EditDetailsComponent,
+    AddNewVaccinatedComponent,
   ],
-  imports: [BrowserModule, FormsModule, HttpClientModule],
+  imports: [BrowserModule, FormsModule, HttpClientModule, AppRoutingModule],
 
   //putting service in the in the providers means
   //you can access it in other component

@@ -40,8 +40,14 @@ export class VaccinatedService {
   }
 
   deletePersonnel(personnelName: string) {
-    return this.vaccinatedList.filter((vaccinated) => {
-      return vaccinated.firstName !== personnelName;
-    });
+    this.vaccListChanged.emit(
+      this.vaccinatedList.filter((vaccinated) => {
+        return vaccinated.firstName !== personnelName;
+      })
+    );
+  }
+
+  getPersonnel(index: number) {
+    return this.vaccinatedList[index];
   }
 }

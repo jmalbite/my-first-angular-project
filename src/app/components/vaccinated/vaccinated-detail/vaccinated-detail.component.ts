@@ -1,4 +1,6 @@
-import { Component, Input, OnInit, EventEmitter } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Params, Router } from '@angular/router';
+
 import { Vaccinated } from '../vaccinated.model';
 import { VaccinatedService } from '../../services/vaccinated.service';
 
@@ -8,14 +10,29 @@ import { VaccinatedService } from '../../services/vaccinated.service';
   styleUrls: ['./vaccinated-detail.component.css'],
 })
 export class VaccinatedDetailComponent implements OnInit {
-  @Input() vaccinated: Vaccinated;
+  vaccinated: Vaccinated;
+  id: number;
 
-  constructor(private vaccinatedService: VaccinatedService) {}
+  constructor(
+    private vaccinatedService: VaccinatedService,
+    private router: Router,
+    private route: ActivatedRoute
+  ) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    //this will return the id of the selected personnel to assign to the router
+    this.route.params.subscribe((params: Params) => {
+      this.id = +params['id'];
+      this.vaccinated = this.vaccinatedService.getPersonnel(this.id);
+    });
+  }
 
-  deletePersonnel() {
-    console.log('deleted');
+  onDeletePersonnel() {
     this.vaccinatedService.deletePersonnel(this.vaccinated.firstName);
+  }
+
+  onEditPerson() {
+    //this.route - will access the current route
+    this.router.navigate(['edit'], { relativeTo: this.route });
   }
 }

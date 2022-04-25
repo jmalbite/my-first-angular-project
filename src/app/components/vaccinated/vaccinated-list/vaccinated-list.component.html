@@ -1,15 +1,16 @@
 <!-- Vaccinated List Component -->
 <div class="row">
   <div class="col-xs-12">
-    <button class="btn btn-success">Add new</button>
+    <button class="btn btn-success" (click)="onAddVaccinated()">Add new</button>
   </div>
 </div>
 <hr />
 <div class="row">
   <div class="col-xs-12">
     <app-vaccinated-item
-      *ngFor="let vaccinatedEl of vaccinatedList"
+      *ngFor="let vaccinatedEl of vaccinatedList; let i = index"
       [vaccinated]="vaccinatedEl"
+      [index]="i"
     ></app-vaccinated-item>
   </div>
 </div>

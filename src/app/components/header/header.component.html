@@ -8,11 +8,13 @@
 
     <div class="collapse navbar-collapse">
       <ul class="nav navbar-nav">
-        <li>
-          <a href="#" (click)="onSelect('vaccinated')">Vaccinated List</a>
+        <li routerLinkActive="active">
+          <a routerLink="/vaccinated-list" routerLink="/vaccinated-list"
+            >Vaccinated List</a
+          >
         </li>
-        <li>
-          <a href="#" (click)="onSelect('vaccineAreas')">Vaccine Areas </a>
+        <li routerLinkActive="active">
+          <a routerLink="vaccine-areas">Vaccine Areas </a>
         </li>
       </ul>
     </div>

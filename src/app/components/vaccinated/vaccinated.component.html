@@ -6,15 +6,8 @@
   </div>
 
   <!-- Vaccinated Details Component -->
-  <div class="col-md-5">
-    <app-vaccinated-detail
-      *ngIf="personnelData; else infoText"
-      [vaccinated]="personnelData"
-    ></app-vaccinated-detail>
-
-    <!-- this template is to display when no data selected in the list -->
-    <ng-template #infoText>
-      <h3>No vaccinated person seleted</h3>
-    </ng-template>
+  <div class="col-md-7">
+    <!-- added router outlet here since this component is a children component -->
+    <router-outlet></router-outlet>
   </div>
 </div>
