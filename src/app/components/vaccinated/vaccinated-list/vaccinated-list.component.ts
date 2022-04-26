@@ -5,6 +5,7 @@ import { VaccinatedService } from '../../services/vaccinated.service';
 
 //models
 import { Vaccinated } from '../vaccinated.model';
+import { DataStorageServices } from '../../../backend-services/data-storage-services';
 
 @Component({
   selector: 'app-vaccinated-list',
@@ -19,11 +20,14 @@ export class VaccinatedListComponent implements OnInit {
   constructor(
     private vaccinatedService: VaccinatedService,
     private router: Router,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private backendService: DataStorageServices
   ) {}
 
   //ngInit - study different hooks in the angular
   ngOnInit(): void {
+    this.backendService.fetchAllVaccinated();
+
     //display list when the list changes
     this.vaccinatedService.vaccListChanged.subscribe(
       (newList: Vaccinated[]) => {

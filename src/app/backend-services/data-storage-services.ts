@@ -13,16 +13,18 @@ export class DataStorageServices {
 
   constructor(
     private http: HttpClient,
-    private vaccinatedService: VaccinatedService
+    private vaccService: VaccinatedService
   ) {}
 
   storeVaccinated(newData: Vaccinated) {
-    this.http.post(this.apiURL, newData).subscribe((response) => {});
+    this.http.post(this.apiURL, newData).subscribe((response) => {
+      console.log(response);
+    });
   }
 
   fetchAllVaccinated() {
     this.http.get(this.apiURL).subscribe((listResults) => {
-      this.vaccinatedService;
+      this.vaccService.setNewListFromDatabase(listResults);
     });
   }
 }

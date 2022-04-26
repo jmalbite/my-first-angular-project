@@ -1,6 +1,8 @@
+import { Injectable } from '@angular/core';
 import { Subject } from 'rxjs';
 import { Vaccinated } from '../vaccinated/vaccinated.model';
 
+@Injectable({ providedIn: 'root' })
 export class VaccinatedService {
   //it will receive vaccinated personnel data
   vaccinatedPersonnelSelected = new Subject<Vaccinated>();
@@ -46,6 +48,8 @@ export class VaccinatedService {
 
   setNewListFromDatabase(newList) {
     this.vaccinatedList = newList;
-    this.vaccListChanged.next(this.vaccinatedList.slice());
+    console.log(this.vaccinatedList);
+
+    //this.vaccListChanged.next(this.vaccinatedList.slice());
   }
 }
