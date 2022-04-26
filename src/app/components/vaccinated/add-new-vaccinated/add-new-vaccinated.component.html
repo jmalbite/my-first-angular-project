@@ -4,7 +4,7 @@
 <!-- for this form i will be implementing the reactive approach for angular form -->
 <div class="row">
   <div class="col-xs-10">
-    <form>
+    <form [formGroup]="addForm" (ngSubmit)="onSubmit()">
       <div class="row">
         <div class="col-xs-12">
           <div class="form-group">
@@ -13,7 +13,7 @@
               class="form-control"
               type="text"
               id="firstName"
-              name="firstName"
+              formControlName="firstName"
             />
           </div>
         </div>
@@ -27,7 +27,7 @@
               class="form-control"
               type="text"
               id="lastName"
-              name="lastName"
+              formControlName="lastName"
             />
           </div>
         </div>
@@ -37,7 +37,12 @@
         <div class="col-xs-12">
           <div class="form-group">
             <label for="">Age</label>
-            <input type="number" id="age" name="age" class="form-control" />
+            <input
+              type="number"
+              id="age"
+              formControlName="age"
+              class="form-control"
+            />
           </div>
         </div>
       </div>
@@ -49,7 +54,7 @@
             <input
               type="text"
               id="address"
-              name="address"
+              formControlName="address"
               class="form-control"
             />
           </div>
@@ -63,7 +68,7 @@
             <input
               type="date"
               id="dateVaccinated"
-              name="dateVaccinated"
+              formControlName="dateVaccinated"
               class="form-control"
             />
           </div>
@@ -78,8 +83,7 @@
             id="vaccineType"
             placeholder="vaccine type"
             class="form-control"
-            name="vaccineType"
-            ngModel
+            formControlName="vaccineType"
             required
           >
             <option>Pfizer</option>
@@ -96,6 +100,7 @@
             type="submit"
             class="btn btn-success"
             style="margin-right: 5px"
+            [disabled]="!addForm.valid"
           >
             Save
           </button>
@@ -103,6 +108,7 @@
             type="button"
             class="btn btn-primary"
             style="margin-right: 5px"
+            (click)="onClear()"
           >
             Clear
           </button>

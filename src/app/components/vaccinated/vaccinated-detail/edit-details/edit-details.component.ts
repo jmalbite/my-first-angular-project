@@ -14,7 +14,7 @@ export class EditDetailsComponent implements OnInit {
   editMode: boolean = false;
 
   //reactive form or reactive approach forms angular
-  vaccinatedForm: FormGroup;
+  editForm: FormGroup;
 
   constructor(
     private route: ActivatedRoute,
@@ -55,7 +55,7 @@ export class EditDetailsComponent implements OnInit {
       vaccineType = selectedPerson.vaccineType;
     }
 
-    this.vaccinatedForm = new FormGroup({
+    this.editForm = new FormGroup({
       firstName: new FormControl(firstName, Validators.required),
       lastName: new FormControl(lastName, Validators.required),
       age: new FormControl(age, [
@@ -81,12 +81,9 @@ export class EditDetailsComponent implements OnInit {
     // );
 
     if (this.editMode) {
-      this.vaccinatedService.updatePersonsDetail(
-        this.id,
-        this.vaccinatedForm.value
-      );
+      this.vaccinatedService.updatePersonsDetail(this.id, this.editForm.value);
     } else {
-      this.vaccinatedService.addVaccinated(this.vaccinatedForm.value);
+      this.vaccinatedService.addVaccinated(this.editForm.value);
     }
 
     this.onCancel();

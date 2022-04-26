@@ -16,8 +16,43 @@ export class AddNewVaccinatedComponent implements OnInit {
     private router: Router
   ) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.initForm();
+  }
 
   //reactive form or reactive approach forms angular
-  vaccinatedForm: FormGroup;
+  addForm: FormGroup;
+
+  private initForm() {
+    let firstName: string = '';
+    let lastName: string = '';
+    let age: number;
+    let address: string = '';
+    let dateVaccinated: string = '';
+    let vaccineType: string = '';
+
+    this.addForm = new FormGroup({
+      firstName: new FormControl(firstName, Validators.required),
+      lastName: new FormControl(lastName, Validators.required),
+      age: new FormControl(age, [
+        Validators.required,
+        Validators.pattern(/^[1-9]+[0-9]*$/),
+      ]),
+      address: new FormControl(address, Validators.required),
+      dateVaccinated: new FormControl(dateVaccinated, Validators.required),
+      vaccineType: new FormControl(vaccineType, Validators.required),
+    });
+  }
+
+  onSubmit() {
+    this.vaccinatedService.addVaccinated(this.addForm.value);
+    this.onClear();
+
+    //after adding the new data it will revert to the previous route
+    //this.router.navigate(['../'], { relativeTo: this.route });
+  }
+
+  onClear() {
+    this.addForm.reset();
+  }
 }

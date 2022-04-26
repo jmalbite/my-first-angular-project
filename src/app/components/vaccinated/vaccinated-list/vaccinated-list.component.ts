@@ -28,7 +28,6 @@ export class VaccinatedListComponent implements OnInit {
     this.vaccinatedService.vaccListChanged.subscribe(
       (newList: Vaccinated[]) => {
         this.vaccinatedList = newList;
-        console.log(this.vaccinatedList);
       }
     );
 

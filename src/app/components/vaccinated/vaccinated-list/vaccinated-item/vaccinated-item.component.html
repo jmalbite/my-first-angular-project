@@ -8,10 +8,11 @@
 >
   <div class="pull-left">
     <h4 class="list-group-item-heading">
-      {{ vaccinated.firstName }} {{ vaccinated.lastName }}
+      {{ vaccinated.firstName | uppercase }}
+      {{ vaccinated.lastName | uppercase }}
     </h4>
     <p class="list-group-item-text">
-      Date vaccinated: {{ vaccinated.dateVaccinated }}
+      Date vaccinated: {{ vaccinated.dateVaccinated | date }}
     </p>
   </div>
 </a>

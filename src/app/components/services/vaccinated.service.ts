@@ -31,6 +31,7 @@ export class VaccinatedService {
 
   addVaccinated(newData: Vaccinated) {
     this.vaccinatedList.push(newData);
+    this.vaccListChanged.next(this.vaccinatedList.slice());
   }
 
   updatePersonsDetail(index: number, updatedData: Vaccinated) {
