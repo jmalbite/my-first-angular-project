@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Params, Router } from '@angular/router';
+import { DataStorageServices } from 'src/app/backend-services/data-storage-services';
 
 import { VaccinatedService } from '../../services/vaccinated.service';
 
@@ -13,7 +14,8 @@ export class AddNewVaccinatedComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private vaccinatedService: VaccinatedService,
-    private router: Router
+    private router: Router,
+    private backendServices: DataStorageServices
   ) {}
 
   ngOnInit(): void {
@@ -45,8 +47,10 @@ export class AddNewVaccinatedComponent implements OnInit {
   }
 
   onSubmit() {
-    this.vaccinatedService.addVaccinated(this.addForm.value);
+    this.backendServices.storeVaccinated(this.addForm.value);
     this.onClear();
+
+    // this.vaccinatedService.addVaccinated(this.addForm.value);
 
     //after adding the new data it will revert to the previous route
     //this.router.navigate(['../'], { relativeTo: this.route });

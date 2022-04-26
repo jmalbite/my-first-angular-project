@@ -43,4 +43,9 @@ export class VaccinatedService {
     this.vaccinatedList.splice(index, 1);
     this.vaccListChanged.next(this.vaccinatedList.slice());
   }
+
+  setNewListFromDatabase(newList) {
+    this.vaccinatedList = newList;
+    this.vaccListChanged.next(this.vaccinatedList.slice());
+  }
 }
